@@ -2,7 +2,6 @@ package com.codestates.coplit;
 
 public class Solution { 
 	public String addOneSecond(int hour, int minute, int second) {
-    // TODO:
     second++;
     if (second >= 60) {
       second = 0;
