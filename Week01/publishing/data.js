@@ -1,4 +1,3 @@
-// 트윗리스트를 만들 트윗 데이터를 가지고 있는 코드
 export let DATA = [
   {
     user: "ingikim",
