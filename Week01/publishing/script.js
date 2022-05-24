@@ -1,5 +1,4 @@
 import { DATA, generateNewTweet } from "./data.js";
-// DATA는 이미 작성된 트윗을 표시합니다.
 console.log(DATA);
 
 Number.prototype.padLeft = function () {
@@ -21,7 +20,6 @@ Date.prototype.format = function () {
   var format = [yyyy, month, dd].join("-") + " " + [HH, mm, ss].join(":");
   return format;
 };
-// generateNewTweet을 호출할 때마다 새로운 트윗을 생성합니다.
 console.log(generateNewTweet());
 
 const state = {
@@ -95,7 +93,6 @@ const handleClickUser = function (event) {
 };
 
 
-// 버튼을 모두 완성한 후 주석을 제거하시면 트윗리스트를 볼 수 있습니다.
 tweetButton.onclick = function () {
   if (usernameInput.value && messageInput.value) {
     const tweetObject = {};
