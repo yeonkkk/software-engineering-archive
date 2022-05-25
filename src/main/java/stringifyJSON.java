@@ -44,19 +44,45 @@ public class stringifyJSON {
     return mapper.writeValueAsString(data);
   }
 
-  public String stringify(Object data) {
+  public String stringify(Object data)  {
 
     //입력된 값이 문자열일 경우
-
+    if (data instanceof String) {
+      return String.format("\"%s\"", data);
+    }
     //입력된 값이 Integer일 경우
-
+    else if (data instanceof Integer) {
+      return String.valueOf(data);
+    }
     //입력된 값이 Boolean일 경우
-
+    else if (data instanceof Boolean) {
+      return String.valueOf(data);
+    }
     //입력된 값이 Object[]일 경우
-
+    else if (data instanceof Object[]) {
+      Object[] arr = (Object[]) data;
+      String result = "";
+      for (int i=0; i < arr.length; i++) {
+        result = result + stringify(arr[i]);
+        if(i != arr.length-1) result = result + ",";
+      }
+      return String.format("[%s]", result);
+    }
     //입력된 값이 HashMap일 경우
+    else if (data instanceof HashMap) {
+      HashMap map = (HashMap) data;
+      List<Object> keyList = new ArrayList<>(map.keySet());
+      String result2 = "";
 
+      for (int i=0; i < keyList.size(); i++){
+        result2 += String.format("%s:%s", stringify(keyList.get(i)), stringify(map.get(keyList.get(i))));
+        if(i != keyList.size()-1) result2 += ",";
+      }
+      return String.format("{%s}", result2);
+    }
     //지정되지 않은 타입의 경우에는 "null"을 리턴합니다.
-
+    else {
+      return "null";
+    }
   }
 }
