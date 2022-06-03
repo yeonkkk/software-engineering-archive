@@ -75,7 +75,7 @@ public class GlobalExceptionAdvice {
 
         return response;
     }
-    
+
     @ExceptionHandler
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ErrorResponse handleException(Exception e) {
