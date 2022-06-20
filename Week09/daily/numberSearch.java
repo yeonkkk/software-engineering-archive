@@ -14,5 +14,5 @@ public class Solution {
       else if (str.charAt(i) != ' ') strLen++;
     }
     return (int) Math.round(sum / strLen);
-	} 
+  } 
 }
