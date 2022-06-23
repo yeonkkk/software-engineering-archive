@@ -5,6 +5,7 @@ import com.codestates.exception.ExceptionCode;
 import com.codestates.helper.EmailSender;
 import com.codestates.member.entity.Member;
 import com.codestates.member.repository.MemberRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -15,6 +16,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  *  - 메서드 구현
@@ -22,6 +25,7 @@ import java.util.Optional;
  *  - Spring Data JPA 적용
  *  - 트랜잭션 적용
  */
+@Slf4j
 @Transactional
 @Service
 public class MemberService {
@@ -37,10 +41,21 @@ public class MemberService {
     public Member createMember(Member member) {
         verifyExistsEmail(member.getEmail());
         Member savedMember = memberRepository.save(member);
-
-        // TODO 전송 할 메시지는 만들어 진 상태라고 가정합니다.
-        String message = "";
-        emailSender.sendEmail(message);  // 여기서 비동기로 5초 후에 예외가 발생합니다.
+        /**
+         * TODO
+         *  - 현재 이메일 전송 중 5초 뒤에 예외가 발생합니다.
+         *  - 이메일 전송에 실패할 경우에만, 앞에서 DB에 저장된 회원 정보를 삭제(rollback)하도록
+         *  코드를 구현하세요.
+         */
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        executorService.submit(() -> {
+            try {
+                emailSender.sendEmail("any email message");
+            } catch (Exception e) {
+                log.error("MailSendException happened: ", e);
+                throw new RuntimeException(e);
+            }
+        });
         return savedMember;
     }
 
