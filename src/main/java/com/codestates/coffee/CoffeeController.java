@@ -43,5 +43,23 @@ public class CoffeeController {
 
     //---------------- 여기서 부터 아래에 코드를 구현하세요! -------------------//
     // 1. 커피 정보 수정을 위한 핸들러 메서드 구현
+    @PostMapping("/{coffee-id}")
+    public ResponseEntity updateCoffee(@PathVariable("coffee-id") long coffeeId,
+                                    @RequestParam("korName") String korName,
+                                    @RequestParam("engName") String engName,
+                                    @RequestParam("price") String price) {
+        Map<String, Object> map = new HashMap<>();
+        map.put("korName", korName);
+        map.put("engName", engName);
+        map.put("price", price);
+        map.put("coffee-id", coffeeId);
+
+        return new ResponseEntity<>(map, HttpStatus.OK);
+    }
     // 2. 커피피 정보 삭제를 위한 핸들러 서드 구현
+    @DeleteMapping("/{coffee-id}")
+    public ResponseEntity deleteCoffee() {
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
 }
+
