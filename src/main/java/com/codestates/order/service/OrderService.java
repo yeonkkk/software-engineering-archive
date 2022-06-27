@@ -1,5 +1,6 @@
-package com.codestates.order;
+package com.codestates.order.service;
 
+import com.codestates.order.entity.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

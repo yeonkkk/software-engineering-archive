@@ -1,8 +1,8 @@
 package com.codestates.order.mapper;
 
-import com.codestates.order.Order;
-import com.codestates.order.OrderPostDto;
-import com.codestates.order.OrderResponseDto;
+import com.codestates.order.entity.Order;
+import com.codestates.order.dto.OrderPostDto;
+import com.codestates.order.dto.OrderResponseDto;
 import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")

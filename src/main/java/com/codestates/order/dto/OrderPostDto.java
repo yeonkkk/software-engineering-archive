@@ -1,4 +1,4 @@
-package com.codestates.order;
+package com.codestates.order.dto;
 
 import javax.validation.constraints.Positive;
 
