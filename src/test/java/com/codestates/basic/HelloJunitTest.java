@@ -11,7 +11,7 @@ public class HelloJunitTest {
     @Test
     public void assertionTest1() {
         String actual = "Hello, JUnit";
-        String expected = "Hello, World";
+        String expected = "Hello, JUnit";
 
         assertEquals(expected, actual);
     }

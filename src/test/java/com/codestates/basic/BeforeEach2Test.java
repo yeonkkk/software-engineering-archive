@@ -32,7 +32,7 @@ public class BeforeEach2Test {
     @Test
     public void beforeEachTest2() {
         System.out.println(map);
-        assertDoesNotThrow(() -> getCryptoCurrency("XRP"));
+        assertDoesNotThrow(() -> getCryptoCurrency("ETH"));
     }
 
     private String getCryptoCurrency(String unit) {

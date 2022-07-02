@@ -11,7 +11,7 @@ public class AssertionNullTest {
     @DisplayName("AssertionNull() Test")
     @Test
     public void assertionNullTest() {
-        String currencyName = getCryptoCurrency("ETH");
+        String currencyName = getCryptoCurrency("XRP");
 
         assertNull(currencyName, "should be null");
     }
