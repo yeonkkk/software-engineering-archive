@@ -1,4 +1,4 @@
-package com.codestates.slice.controller.member;
+package com.codestates.homework;
 
 import com.codestates.member.dto.MemberDto;
 import com.google.gson.Gson;
