@@ -10,6 +10,7 @@ Week06 - Algorithm / data structure / daily
 Week07 - Network(HTTP, REST API) / SQL / daily   
 Week08 - RDBMS / Spring Framework(Spring Boot, DI) / daily   
 Week09 - Spring Framework(AOP, MVC-API) / daily   
-Week10 - Spring Framework(MVC, ExceptionHandler), Spring data JDBC / daily   
-Week11 - JPA, Spring data JPA, Transaction / daily   
+Week10 - Spring Framework(MVC, ExceptionHandler) / Spring data JDBC / daily   
+Week11 - JPA, Spring data JPA / Transaction / daily   
+Week12 - Transaction / Testing / API Documentation / daily   
 ```
