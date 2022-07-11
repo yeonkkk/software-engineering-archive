@@ -1,5 +1,7 @@
 package com.codestates.response;
 
+import com.codestates.exception.BusinessLogicException;
+import com.codestates.exception.ExceptionCode;
 import lombok.Getter;
 import org.springframework.validation.BindingResult;
 
@@ -10,8 +12,23 @@ import java.util.stream.Collectors;
 
 @Getter
 public class ErrorResponse {
+
+    private int status;
+
+    private String messages;
+
     private List<FieldError> fieldErrors;
     private List<ConstraintViolationError> violationErrors;
+
+
+    public ErrorResponse(List<FieldError> fieldErrors,
+                         List<ConstraintViolationError> violationErrors,
+                         ExceptionCode exceptionCode) {
+        this.status = exceptionCode.getStatus();
+        this.messages = exceptionCode.getMessage();
+        this.fieldErrors = fieldErrors;
+        this.violationErrors = violationErrors;
+    }
 
     private ErrorResponse(final List<FieldError> fieldErrors,
                           final List<ConstraintViolationError> violationErrors) {
@@ -26,6 +43,11 @@ public class ErrorResponse {
     public static ErrorResponse of(Set<ConstraintViolation<?>> violations) {
         return new ErrorResponse(null, ConstraintViolationError.of(violations));
     }
+
+    public static ErrorResponse of(ExceptionCode exceptionCode) {
+        return new ErrorResponse(null, null, exceptionCode);
+    }
+
 
     @Getter
     public static class FieldError {
