@@ -17,6 +17,7 @@ public class IndexController {
     @Autowired
     MemberRepository memberRepository;
 
+    // 암호화를 위해 사용하는 라이브러리
     @Autowired
     BCryptPasswordEncoder bCryptPasswordEncoder;
 
@@ -59,7 +60,7 @@ public class IndexController {
         member.setPassword(endPassword);
 
         memberRepository.save(member);
-        return "redirect:/join";
+        return "redirect:/login";
     }
 
     @Secured("ROLE_ADMIN")

@@ -24,11 +24,17 @@ public class SecurityConfig {
         http.csrf().disable();
         http.headers().frameOptions().disable();
 
+        // (1) 권한 확인을 한 사용자에 한하여 url에 접근 가능하게 함
+        // (2) 해당 역할을 가진 사용자에게만 url 접근을 가능하게 함
+        // (ROLE_ADMIN은 규약이기에 ADMIN만 써도 자동으로 ROLE을 붙여줌)
+        // 권한 처리를 위해서는 반드시 DB에도 권한 관련 정보가 있어야한다.
+        // (3) 이외에는 로그인하지 않아도 접근 가능 (로그인 하지 않으면 생략 시 모든 url 접근 불가)
+
         http.authorizeRequests()
-                .antMatchers("/user/**").authenticated()
-                .antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')")
+                .antMatchers("/user/**").authenticated() // (1)
+                .antMatchers("/manager/**").access("hasRole('ROLE_ADMIN') or hasRole('ROLE_MANAGER')") // (2)
                 .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .anyRequest().permitAll()
+                .anyRequest().permitAll() // (3)
                 .and()
                 .formLogin()
                 .loginPage("/login");
