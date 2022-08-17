@@ -1,4 +1,4 @@
-package api.v1.entity;
+package apidocumentation.api.v1.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

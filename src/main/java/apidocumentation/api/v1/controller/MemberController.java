@@ -1,7 +1,7 @@
-package api.v1.controller;
+package apidocumentation.api.v1.controller;
 
-import api.v1.entity.Member;
-import api.v1.service.MemberService;
+import apidocumentation.api.v1.entity.Member;
+import apidocumentation.api.v1.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

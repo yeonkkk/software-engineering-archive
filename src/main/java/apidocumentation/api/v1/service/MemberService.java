@@ -1,7 +1,7 @@
-package api.v1.service;
+package apidocumentation.api.v1.service;
 
-import api.v1.entity.Member;
-import api.v1.repository.MemberRepository;
+import apidocumentation.api.v1.entity.Member;
+import apidocumentation.api.v1.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -45,7 +45,6 @@ public class MemberService {
         return memberRepository.findById(memberId).orElseThrow();
     }
 
-    @Transactional(readOnly = true)
     public List<Member> findMembers() {
         return memberRepository.findAll();
     }
